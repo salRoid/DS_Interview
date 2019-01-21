@@ -1,35 +1,41 @@
-  /**
-      Problem: Deleting a node based on the key (first occurence) in Linked List
-      @author salroid
-      www.salroid.me
-  */
+/**
+  Problem: Deleting a node based on the key (first occurence) in Linked List
+  @author salroid
+  www.salroid.me
+*/
    
-  #include <bits/stdc++.h>
+#include <bits/stdc++.h>
    
-  using namespace std;
+using namespace std;
    
-  struct Node {
+struct Node {
     int data;
     struct Node *next;
-  };
+};
    
-  void printList (struct Node *node) {
+void printList (struct Node *node) {
     while (node != NULL) {
       cout << node->data << " ";
       node = node->next;
     }
     cout << "\n";
-  }
+}
    
-  void append (struct Node **headRef, int data) {
+void append (struct Node **headRef, int data) {
     struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
     newNode->next = NULL;
     struct Node *last = *headRef;
     if (*headRef == NULL) {
-      *headRef = newNode;
-      return;
+        *headRef = newNode;
+        return;
     }
+    while(last->next != NULL) {
+        last = last->next;
+    }
+    last->next = newNode;
+    return;
+}
    
 void deleteNode (struct Node **headRef, int key) {
     struct Node *temp = *headRef;
@@ -49,11 +55,6 @@ void deleteNode (struct Node **headRef, int key) {
         previous->next = temp->next;
         free(temp);
     }
-    while(last->next != NULL) {
-        last = last->next;
-    }
-    last->next = newNode;
-    return;
 }
    
 int main () {
