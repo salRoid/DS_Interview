@@ -1,6 +1,7 @@
 /**
     Problem: Get the Nth node from end in a linked list.
-
+	a. Using Total Nodes (getNodeFromEnd)
+	b. Using Two Pointers (getNodeUsingRefPtr)
     @author salroid
     www.salroid.me
 */
@@ -54,6 +55,26 @@ int getNodeFromEnd(struct Node *head, int index) {
 	return temp->data;
 }
 
+int getNodeUsingRefPtr(struct Node *head, int index){
+	struct Node *root = head;
+	struct Node *ref = head;
+	int count = 0;
+	if (head != NULL) {
+		while (count < index) {
+			if (ref == NULL) {
+				return -1;
+			}
+			count++;
+			ref = ref->next;
+		}	
+		while(ref != NULL) {
+			root = root->next;
+			ref = ref->next;
+		}
+		return root->data;
+	}
+}
+
 int main () {
 	struct Node *head = NULL;
 	append(&head, 5);
@@ -64,5 +85,6 @@ int main () {
   	cout << "List: ";
   	printList(head);
   	cout << "2nd Node from End: " << getNodeFromEnd(head, 2) << "\n";
+	cout << "3rd Node from End: " << getNodeUsingRefPtr(head, 3) << "\n";
 	return 0;
 }
