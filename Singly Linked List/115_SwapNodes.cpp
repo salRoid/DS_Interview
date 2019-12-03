@@ -1,9 +1,18 @@
+/**
+    Problem: Swap Nodes in a Linked List
+    @author salroid
+    www.salroid.me
+*/
+
 #include <bits/stdc++.h>
+
 using namespace std;
+
 struct Node {
 	int data;
 	struct Node *next;
 };
+
 void swapNodes(struct Node **headRef, int x, int y) {
 	if (x == y) {
 		return;
