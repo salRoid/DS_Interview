@@ -1,5 +1,7 @@
 #include <iostream>
+
 using namespace std;
+
 int main() {
 	int i ,j, n,key, arr[10];
 	cin >> n;
@@ -12,10 +14,10 @@ int main() {
 			arr[i+1] = arr[i];
 			i = i - 1;
 			arr[i + 1] = key;
-		}	
+		}
 	}
 	for(i = 0; i < n; i++){
 		cout << arr[i] << " ";
-		
+
 	}
 }
