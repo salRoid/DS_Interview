@@ -7,7 +7,7 @@ int multiply(int x, int res[], int resSize) {
     for (int i = 0; i < resSize; i++) {
         int prod = res[i] * x + carry;
         res[i] = prod % 10;
-        int carry = prod / 10;
+        carry = prod / 10;
     }
     while (carry) {
         res[resSize] = carry % 10;
@@ -20,12 +20,14 @@ int multiply(int x, int res[], int resSize) {
 int main () {
     int n;
     cin >> n;
-    int res[500];
+    int res[100000];
     res[0] = 1;
     int resSize = 1;
     for (int i = 2; i <= n; i++) {
+        cout << i << endl;
         resSize = multiply(i, res, resSize);
     }
+
     cout << "Factorial of given number is \n"; 
     for (int i = resSize - 1; i >= 0; i--) 
         cout << res[i]; 
